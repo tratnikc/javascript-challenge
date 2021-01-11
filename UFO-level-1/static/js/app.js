@@ -8,12 +8,18 @@ console.log(tableData);
 
 // step 1 - populate table
 // loop thru table
-// add empty table row 'tr' for each sighting
-//
+// add table row 'tr' for each sighting
+// use Object.entries to append column data
 tableData.forEach(function(sighting) {
     console.log(sighting);
     var row = tbody.append("tr");
+    Object.entries(sighting).forEach(function([key,value]) {
+        // append a cell to the row for each value
+        var cell = row.append("td");
+        cell.text(value);
+    });
 });
+
 
 
 
