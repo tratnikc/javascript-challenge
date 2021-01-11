@@ -45,9 +45,14 @@ function runEnter() {
     d3.event.preventDefault();
 
     // get the value property of the input date ==>> get the date input
-    var inputDate = d3.select("#datetime");
-    var inputDateValue = inputDate.property("value");
-    console.log(inputDateValue);
+    var startDate = d3.select("#datetime");
+    var endDate = d3.select("datetime-end");
+    var inputStartDate = startDate.property("value");
+    var inputEndDate = endDate.property("value");
+
+    console.log(inputStartDate);
+    console.log(inputEndDate);
+
 
     var filteredData = tableData.filter(sighting => sighting.datetime === inputDateValue);
 
