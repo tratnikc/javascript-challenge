@@ -6,7 +6,7 @@ var tbody = d3.select("tbody");
 
 console.log(tableData);
 
-// step 1 - populate table
+// step 1 - append table to webpage
 // loop thru table
 // add table row 'tr' for each sighting
 // use Object.entries to append column data
@@ -28,6 +28,13 @@ tableData.forEach(function(sighting) {
 //         cell.text(value);
 //     });
 // });
+
+// step 2 - filter data using date
+// select button using ID
+var filterButton = d3.select("#filter-btn");
+
+// select the date form using ID
+var filterDate = d3.select("#datetime");
 
 
 
