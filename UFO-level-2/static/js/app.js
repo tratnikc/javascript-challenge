@@ -56,11 +56,15 @@ function runEnter() {
     var stateName = d3.select("#state-name");
     var inputState = stateName.property("value");
 
+    var countryName = d3.select("#country-name");
+    var inputCountry = countryName.property("value");
+
 
     console.log(inputStartDate);
     console.log(inputEndDate);
     console.log(inputCity);
     console.log(inputState);
+    console.log(inputCountry);
 
     var filteredData = tableData.filter(sighting => sighting.datetime === inputStartDate);
 
@@ -86,6 +90,12 @@ function runEnter() {
     // filter by state 
     if (inputState != "") {
         var filteredData = tableData.filter(sighting => sighting.state === inputState);
+        showFilteredData(filteredData);
+    }
+
+    // filter by country
+    if (inputCountry != "") {
+        var filteredData = tableData.filter(sighting => sighting.country === inputCountry);
         showFilteredData(filteredData);
     }
     
