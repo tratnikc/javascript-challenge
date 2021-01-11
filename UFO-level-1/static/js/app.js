@@ -11,7 +11,7 @@ console.log(tableData);
 // add table row 'tr' for each sighting
 // use Object.entries to append column data
 tableData.forEach(function(sighting) {
-    console.log(sighting);
+    // console.log(sighting);
     var row = tbody.append("tr");
     Object.entries(sighting).forEach(function([key,value]) {
         // append a cell to the row for each value
@@ -36,5 +36,18 @@ var filterButton = d3.select("#filter-btn");
 // select the date form using ID
 var filterDate = d3.select("#datetime");
 
+// create event handlers
+filterButton.on("click", runEnter);
+filterDate.on("submit", runEnter);
 
+function runEnter() {
+    // prevent the page from refreshing
+    d3.event.preventDefault();
+
+    // get the value property of the input date ==>> get the date input
+    var inputDate = d3.select("#datetime");
+    var inputDateValue = inputDate.property("value");
+    console.log(inputDateValue);
+
+};
 
