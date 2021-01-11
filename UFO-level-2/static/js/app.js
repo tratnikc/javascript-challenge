@@ -54,16 +54,15 @@ function runEnter() {
     var inputCity = cityName.property("value");
 
     var stateName = d3.select("#state-name");
-    var inputState = cityName.property("value");
+    var inputState = stateName.property("value");
 
 
     console.log(inputStartDate);
     console.log(inputEndDate);
     console.log(inputCity);
+    console.log(inputState);
 
     var filteredData = tableData.filter(sighting => sighting.datetime === inputStartDate);
-
-    console.log(filteredData);
 
     // filter by date or date range
     if (inputStartDate == "" && inputEndDate == "") {
@@ -85,8 +84,12 @@ function runEnter() {
     }
 
     // filter by state 
+    if (inputState != "") {
+        var filteredData = tableData.filter(sighting => sighting.state === inputState);
+        showFilteredData(filteredData);
+    }
     
-
+    console.log(filteredData);
 
 };
 
