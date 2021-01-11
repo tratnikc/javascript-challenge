@@ -46,7 +46,7 @@ function runEnter() {
 
     // get the value property of the input date ==>> get the date input
     var startDate = d3.select("#datetime");
-    var endDate = d3.select("datetime-end");
+    var endDate = d3.select("#datetime-end");
     var inputStartDate = startDate.property("value");
     var inputEndDate = endDate.property("value");
 
@@ -54,16 +54,22 @@ function runEnter() {
     console.log(inputEndDate);
 
 
-    var filteredData = tableData.filter(sighting => sighting.datetime === inputDateValue);
+    var filteredData = tableData.filter(sighting => sighting.datetime === inputStartDate);
 
     console.log(filteredData);
 
-    if (inputDateValue == "") {
+    if (inputStartDate == "" && inputEndDate == "") {
         showFilteredData(tableData);
     }
-    else {
+    else if (inputEndDate == "" && inputStartDate != "") {
         showFilteredData(filteredData);
     }
+    else {
+        // both dates have values
+        var filteredData = tableData.filter(sighting => (sighting.datetime >= inputStartDate && sighting.datetime <= inputEndDate));
+        showFilteredData(filteredData);
+    } 
+
 };
 
 function showFilteredData(filtered) {
