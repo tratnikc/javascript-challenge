@@ -52,7 +52,32 @@ function runEnter() {
     var filteredData = tableData.filter(sighting => sighting.datetime === inputDateValue);
 
     console.log(filteredData);
-    
 
+    if (inputDateValue == "") {
+        showFilteredData(tableData);
+    }
+    else {
+        showFilteredData(filteredData);
+    }
+    
+    
 };
 
+function showFilteredData(filtered) {
+    var sightings = filtered;
+    var tbody = d3.select("tbody");
+    // clear webpage table
+    tbody.html("");
+
+    filtered.forEach((sighting) => {
+        var row = tbody.append("tr");
+        Object.entries(sighting).forEach(([key,value]) => {
+            var cell = row.append("td");
+            cell.text(value);
+        });
+    });
+
+    console.log(filtered.length);
+
+
+}
