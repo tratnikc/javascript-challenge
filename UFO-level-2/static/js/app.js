@@ -59,12 +59,17 @@ function runEnter() {
     var countryName = d3.select("#country-name");
     var inputCountry = countryName.property("value");
 
+    var shapeName = d3.select("#shape-name");
+    var inputShape = shapeName.property("value");
+
 
     console.log(inputStartDate);
     console.log(inputEndDate);
     console.log(inputCity);
     console.log(inputState);
     console.log(inputCountry);
+    console.log(inputShape);
+
 
     var filteredData = tableData.filter(sighting => sighting.datetime === inputStartDate);
 
@@ -98,7 +103,13 @@ function runEnter() {
         var filteredData = tableData.filter(sighting => sighting.country === inputCountry);
         showFilteredData(filteredData);
     }
-    
+
+    // filter by shape
+    if (inputShape != "") {
+        var filteredData = tableData.filter(sighting => sighting.shape === inputShape);
+        showFilteredData(filteredData);
+    }
+
     console.log(filteredData);
 
 };
