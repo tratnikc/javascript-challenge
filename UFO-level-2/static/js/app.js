@@ -51,17 +51,20 @@ function runEnter() {
     var inputEndDate = endDate.property("value");
 
     var cityName = d3.select("#city-name");
-    var inputCity = cityName.property("value");
+    var inputCity = cityName.property("value").toLowerCase();
 
     var stateName = d3.select("#state-name");
-    var inputState = stateName.property("value");
+    var inputState = stateName.property("value").toLowerCase();
 
     var countryName = d3.select("#country-name");
-    var inputCountry = countryName.property("value");
+    var inputCountry = countryName.property("value").toLowerCase();
 
     var shapeName = d3.select("#shape-name");
-    var inputShape = shapeName.property("value");
+    var inputShape = shapeName.property("value").toLowerCase();
 
+    var filteredData = tableData;
+
+    var myDate = d3.time.format()
 
     console.log(inputStartDate);
     console.log(inputEndDate);
@@ -70,48 +73,42 @@ function runEnter() {
     console.log(inputCountry);
     console.log(inputShape);
 
-
-    var filteredData = tableData.filter(sighting => sighting.datetime === inputStartDate);
-
     // filter by date or date range
     if (inputStartDate == "" && inputEndDate == "") {
-        showFilteredData(tableData);
+        var filteredData = tableData;
     }
-    else if (inputEndDate == "" && inputStartDate != "") {
-        showFilteredData(filteredData);
+    else if (inputStartDate != "" && inputEndDate == "") {
+        var filteredData = tableData.filter(sighting => sighting.datetime === tParser(inputStartDate));
+    }
+    else if (inputStartDate == "" && inputEndDate != "") {
+        var filteredData = tableData.filter(sighting => sighting.datetime <= inputEndDate);
     }
     else {
         // both dates have values
-        var filteredData = tableData.filter(sighting => (sighting.datetime >= inputStartDate && sighting.datetime <= inputEndDate));
-        showFilteredData(filteredData);
+        var filteredData = tableData.filter(sighting => Date(sighting.datetime) >= Date(inputStartDate) && Date(sighting.datetime) <= Date(inputEndDate));
     } 
 
     // filter by city
     if (inputCity != "") {
-        var filteredData = tableData.filter(sighting => sighting.city === inputCity);
-        showFilteredData(filteredData);
+        var filteredData = filteredData.filter(sighting => sighting.city === inputCity);
     }
 
     // filter by state 
     if (inputState != "") {
-        var filteredData = tableData.filter(sighting => sighting.state === inputState);
-        showFilteredData(filteredData);
+        var filteredData = filteredData.filter(sighting => sighting.state === inputState);
     }
 
     // filter by country
     if (inputCountry != "") {
-        var filteredData = tableData.filter(sighting => sighting.country === inputCountry);
-        showFilteredData(filteredData);
+        var filteredData = filteredData.filter(sighting => sighting.country === inputCountry);
     }
 
     // filter by shape
     if (inputShape != "") {
-        var filteredData = tableData.filter(sighting => sighting.shape === inputShape);
-        showFilteredData(filteredData);
+        var filteredData = filteredData.filter(sighting => sighting.shape === inputShape);
     }
 
-    console.log(filteredData);
-
+    showFilteredData(filteredData);
 };
 
 function showFilteredData(filtered) {
@@ -127,5 +124,6 @@ function showFilteredData(filtered) {
             cell.text(value);
         });
     });
+    console.log(filtered);
     console.log(filtered.length);
 }
