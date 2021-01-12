@@ -4,8 +4,6 @@ var tableData = data;
 // get a reference to the table body
 var tbody = d3.select("tbody");
 
-console.log(tableData);
-
 // step 1 - append table to webpage
 // loop thru table
 // add table row 'tr' for each sighting
@@ -64,12 +62,12 @@ function runEnter() {
 
     var filteredData = tableData;
 
-    console.log(inputStartDate);
-    console.log(inputEndDate);
-    console.log(inputCity);
-    console.log(inputState);
-    console.log(inputCountry);
-    console.log(inputShape);
+    // console.log(inputStartDate);
+    // console.log(inputEndDate);
+    // console.log(inputCity);
+    // console.log(inputState);
+    // console.log(inputCountry);
+    // console.log(inputShape);
 
     // filter by date or date range
     if (inputStartDate == "" && inputEndDate == "") {
@@ -79,11 +77,12 @@ function runEnter() {
         var filteredData = tableData.filter(sighting => sighting.datetime === inputStartDate);
     }
     else if (inputStartDate == "" && inputEndDate != "") {
-        var filteredData = tableData.filter(sighting => sighting.datetime <= inputEndDate);
+        var filteredData = tableData.filter(sighting => (new Date(sighting.datetime) <= new Date(inputEndDate)));
     }
     else {
         // both dates have values
-        var filteredData = tableData.filter(sighting => sighting.datetime >= inputStartDate && sighting.datetime <= inputEndDate);
+        var filteredData = tableData.filter(sighting => (new Date(sighting.datetime) >= new Date(inputStartDate) && 
+                            new Date(sighting.datetime) <= new Date(inputEndDate) ));
     } 
 
     // filter by city
