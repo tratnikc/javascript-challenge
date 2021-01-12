@@ -64,8 +64,6 @@ function runEnter() {
 
     var filteredData = tableData;
 
-    var myDate = d3.time.format()
-
     console.log(inputStartDate);
     console.log(inputEndDate);
     console.log(inputCity);
@@ -78,14 +76,14 @@ function runEnter() {
         var filteredData = tableData;
     }
     else if (inputStartDate != "" && inputEndDate == "") {
-        var filteredData = tableData.filter(sighting => sighting.datetime === tParser(inputStartDate));
+        var filteredData = tableData.filter(sighting => sighting.datetime === inputStartDate);
     }
     else if (inputStartDate == "" && inputEndDate != "") {
         var filteredData = tableData.filter(sighting => sighting.datetime <= inputEndDate);
     }
     else {
         // both dates have values
-        var filteredData = tableData.filter(sighting => Date(sighting.datetime) >= Date(inputStartDate) && Date(sighting.datetime) <= Date(inputEndDate));
+        var filteredData = tableData.filter(sighting => sighting.datetime >= inputStartDate && sighting.datetime <= inputEndDate);
     } 
 
     // filter by city
