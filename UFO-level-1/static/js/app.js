@@ -34,11 +34,11 @@ tableData.forEach(function(sighting) {
 var filterButton = d3.select("#filter-btn");
 
 // select the date form using ID
-var filterDate = d3.select("#datetime");
+var filterData = d3.select("#form");
 
 // create event handlers
 filterButton.on("click", runEnter);
-filterDate.on("submit", runEnter);
+filterData.on("submit", runEnter);
 
 function runEnter() {
     // prevent the page from refreshing
