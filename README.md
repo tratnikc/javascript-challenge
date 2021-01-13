@@ -2,6 +2,15 @@
  
 ## JavaScript amd DOM Manipulation
 
+### included
+1. UFO-level-1 folder
+    * index.html
+    * static/js/app.js
+
+2. UFO-level-2 folder
+    * index.html
+    * static/js/app.js
+
 ### Requirements
 
 #### Level 1 - Automatic Table and Data Search
@@ -23,3 +32,29 @@
     * state
     * country
     * shape
+
+### Notes 
+#### UFO-level-1
+1.  Takes Date as criteria to filter the table.
+2.  Click Filter Table button or hit enter after entering the date will show the filtered records.
+
+#### UFO-level-2
+1. Search filters include
+    a. Start Date
+    b. End Date
+    c. City
+    d. State
+    e. Country
+    f. Shape
+
+2. Expected outputs based on Date filters
+    * Enter Start Date to filter table for that specific date
+    * Enter Start Date and End Date to filter a range of dates inclusive
+    * Enter End Date only to filter records up to the End Date
+    * Blank Start Date and End Date retrieves all records
+
+3. Expected outputs based on City, State, Country, Shape
+    * Not case-sensitive, table will show all records based on the search parameters.
+
+4. Table can be filtered using all search criteria by entering values and clicking Filter Table button.
+
