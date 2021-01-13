@@ -15,6 +15,10 @@ var filterData = d3.select("#form");
 filterButton.on("click", runEnter);
 filterData.on("submit", runEnter);
 
+// uncomment the code below to filter the table each time 
+// a search parameter value is entered or changed
+//filterData.on("change", runEnter);
+
 function thishappened() {
     // test if event is triggered
     alert(d3.event.target);
