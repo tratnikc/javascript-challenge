@@ -56,7 +56,7 @@
 3. Expected outputs based on City, State, Country, Shape
     * Not case-sensitive, table will show all records based on the search parameters.
 
-4. Table can be filtered using all search criteria by entering values and clicking Filter Table button.
+4. Table can be filtered using all search criteria by entering values and clicking Filter Table button or by hitting the Enter key.
 
 ##### Uncomment eventHandler "change" to display filtered records each time a search parameter is changed.
 ```
