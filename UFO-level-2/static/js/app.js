@@ -34,13 +34,14 @@ recordedSightings(tableData);
 var filterButton = d3.select("#filter-btn");
 
 // select the date form using ID
-var filterData = d3.selectAll("#form-control");
+var filterData = d3.select("#form");
 
 // create event handlers
 filterButton.on("click", runEnter);
-filterData.on("submit", thishappened);
+filterData.on("change", runEnter);
 
 function thishappened() {
+    // test if event is triggered
     alert(d3.event.target);
     alert(d3.select(this).select("input").property("id"));
 }
@@ -88,7 +89,6 @@ function runEnter() {
         var filteredData = tableData.filter(sighting => (new Date(sighting.datetime) >= new Date(inputStartDate) && 
                             new Date(sighting.datetime) <= new Date(inputEndDate) ));
     } 
-    console.log(filteredData);
 
     // filter by city
     if (inputCity != "") {
