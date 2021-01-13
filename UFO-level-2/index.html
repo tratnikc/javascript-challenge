@@ -32,31 +32,31 @@
             <div class="panel panel-default">
               <div class="panel-heading">Filter Search</div>
               <div class="panel-body">
-                <form>
+                <form id="form">
                   <div class="form-group">
                     <ul class="list-group" id="filters">
                       <li class="filter list-group-item">
-                        <label for="start-date">Enter Start Date</label>
-                        <input class="form-control" id="datetime" type="text" placeholder="1/11/2011">
+                        <label for="date">Enter Start Date</label>
+                        <input class="form-control" id="datetime" type="text" placeholder="1/1/2011">
                       </li>
                       <li class="filter list-group-item">
-                        <label for="end-date">Enter End Date</label>
-                        <input class="form-control" id="datetime-end" type="text" placeholder="1/11/2011">
+                        <label for="date-end">Enter End Date</label>
+                        <input class="form-control" id="datetime-end" type="text" placeholder="1/1/2011">
                       </li>
                       <li class="filter list-group-item">
-                        <label for="city">Enter a City</label>
+                        <label for="city-name">Enter a City</label>
                         <input class="form-control" id="city-name" type="text" placeholder="benton">
                       </li>
                       <li class="filter list-group-item">
-                        <label for="state">Enter a State</label>
+                        <label for="state-name">Enter a State</label>
                         <input class="form-control" id="state-name" type="text" placeholder="ca">
                       </li>
                       <li class="filter list-group-item">
-                        <label for="country">Enter a Country</label>
+                        <label for="country-name">Enter a Country</label>
                         <input class="form-control" id="country-name" type="text" placeholder="us">
                       </li>
                       <li class="filter list-group-item">
-                        <label for="shape">Enter a Shape</label>
+                        <label for="shape-name">Enter a Shape</label>
                         <input class="form-control" id="shape-name" type="text" placeholder="circle">
                       </li>
                     </ul>
@@ -84,6 +84,8 @@
               <tbody></tbody>
             </table>
           </div>
+        </div>
+        <div class="col" id="number-of-records">
         </div>
       </div>
     </div>

@@ -18,6 +18,8 @@ tableData.forEach(function(sighting) {
     });
 });
 
+recordedSightings(tableData);
+
 // // refactor to use arrow functions
 // tableData.forEach((sighting) => {
 //     var row = tbody.append("tr");
@@ -32,11 +34,16 @@ tableData.forEach(function(sighting) {
 var filterButton = d3.select("#filter-btn");
 
 // select the date form using ID
-var filterDate = d3.select("#datetime");
+var filterData = d3.selectAll("#form-control");
 
 // create event handlers
 filterButton.on("click", runEnter);
-filterDate.on("submit", runEnter);
+filterData.on("submit", thishappened);
+
+function thishappened() {
+    alert(d3.event.target);
+    alert(d3.select(this).select("input").property("id"));
+}
 
 function runEnter() {
     // prevent the page from refreshing
@@ -44,9 +51,13 @@ function runEnter() {
 
     // get the value property of the input date ==>> get the date input
     var startDate = d3.select("#datetime");
-    var endDate = d3.select("#datetime-end");
     var inputStartDate = startDate.property("value");
+    
+    var endDate = d3.select("#datetime-end");
     var inputEndDate = endDate.property("value");
+
+    console.log(inputStartDate);
+    console.log(inputEndDate);
 
     var cityName = d3.select("#city-name");
     var inputCity = cityName.property("value").toLowerCase();
@@ -61,13 +72,6 @@ function runEnter() {
     var inputShape = shapeName.property("value").toLowerCase();
 
     var filteredData = tableData;
-
-    // console.log(inputStartDate);
-    // console.log(inputEndDate);
-    // console.log(inputCity);
-    // console.log(inputState);
-    // console.log(inputCountry);
-    // console.log(inputShape);
 
     // filter by date or date range
     if (inputStartDate == "" && inputEndDate == "") {
@@ -84,6 +88,7 @@ function runEnter() {
         var filteredData = tableData.filter(sighting => (new Date(sighting.datetime) >= new Date(inputStartDate) && 
                             new Date(sighting.datetime) <= new Date(inputEndDate) ));
     } 
+    console.log(filteredData);
 
     // filter by city
     if (inputCity != "") {
@@ -123,4 +128,13 @@ function showFilteredData(filtered) {
     });
     console.log(filtered);
     console.log(filtered.length);
-}
+    recordedSightings(filtered);
+
+};
+
+function recordedSightings(filtered) {
+    var records = d3.select("#number-of-records");
+    records.html("");
+    var row = records.append("row");
+    var p = row.append("p").text(`${filtered.length} sightings recorded`).style("text-align", "center");
+};
