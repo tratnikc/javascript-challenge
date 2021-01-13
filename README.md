@@ -58,3 +58,7 @@
 
 4. Table can be filtered using all search criteria by entering values and clicking Filter Table button.
 
+##### Uncomment eventHandler "change" to display filtered records each time a search parameter is changed.
+```
+filterData.on("change", runEnter);
+```
