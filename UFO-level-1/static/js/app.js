@@ -49,7 +49,7 @@ function runEnter() {
     var inputDateValue = inputDate.property("value");
     console.log(inputDateValue);
 
-    var filteredData = tableData.filter(sighting => sighting.datetime === inputDateValue);
+    var filteredData = tableData.filter(sighting => new Date(sighting.datetime).toDateString() === new Date(inputDateValue).toDateString());
 
     console.log(filteredData);
 
