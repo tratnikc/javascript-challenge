@@ -52,7 +52,7 @@ function runEnter() {
         var filteredData = tableData;
     }
     else if (inputStartDate != "" && inputEndDate == "") {
-        var filteredData = tableData.filter(sighting => (new Date(sighting.datetime) === new Date(inputStartDate)));
+        var filteredData = tableData.filter(sighting => (new Date(sighting.datetime).toDateString() === new Date(inputStartDate).toDateString()));
     }
     else if (inputStartDate == "" && inputEndDate != "") {
         var filteredData = tableData.filter(sighting => (new Date(sighting.datetime) <= new Date(inputEndDate)));
