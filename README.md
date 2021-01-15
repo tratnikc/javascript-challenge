@@ -40,12 +40,12 @@
 
 #### UFO-level-2
 1. Search filters include  
-    a. Start Date
-    b. End Date
-    c. City
-    d. State
-    e. Country
-    f. Shape
+    a. Start Date  
+    b. End Date  
+    c. City  
+    d. State  
+    e. Country  
+    f. Shape  
 
 2. Expected outputs based on Date filters
     * Enter Start Date to filter table for that specific date
