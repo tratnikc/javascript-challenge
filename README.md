@@ -39,7 +39,7 @@
 2.  Click Filter Table button or hit enter after entering the date will show the filtered records.
 
 #### UFO-level-2
-1. Search filters include
+1. Search filters include  
     a. Start Date
     b. End Date
     c. City
