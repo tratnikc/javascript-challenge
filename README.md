@@ -1,6 +1,6 @@
 # javascript-challenge
  
-## JavaScript amd DOM Manipulation
+## JavaScript and DOM Manipulation
 
 ### included
 1. UFO-level-1 folder
