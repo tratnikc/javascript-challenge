@@ -87,7 +87,7 @@ function runEnter() {
 };
 
 function showFilteredData(filtered) {
-    var sightings = filtered;
+
     var tbody = d3.select("tbody");
     // clear webpage table
     tbody.html("");
