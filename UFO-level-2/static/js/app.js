@@ -19,12 +19,6 @@ filterData.on("submit", runEnter);
 // a search parameter value is entered or changed
 //filterData.on("change", runEnter);
 
-function thishappened() {
-    // test if event is triggered
-    alert(d3.event.target);
-    alert(d3.select(this).select("input").property("id"));
-}
-
 function runEnter() {
     // prevent the page from refreshing
     d3.event.preventDefault();
